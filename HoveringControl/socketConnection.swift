@@ -14,9 +14,9 @@ public typealias Byte = UInt8
 class socketConnection {
     static let socket = socketConnection()
     
-    private init() {
+    init() {
         self.addr = "127.0.0.1"
-        self.port = Int32(1234)
+        self.port = Int32(8000)
     }
     var addr : String?
     var port : Int32
@@ -43,6 +43,10 @@ class socketConnection {
     }
     func changePort(port : Int32){
         self.port = port
+    }
+    func broadCast() {
+        guard let client = client else {return}
+        client.enableBroadcast()
     }
     
 

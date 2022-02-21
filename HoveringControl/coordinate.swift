@@ -27,6 +27,9 @@ class coordinate{
 class coordiViewModel {
     private let coordi = coordinate.shared
     
+    var msg : String {
+        return "(\(self.getX), \(self.getY))"
+    }
     var getX: Int {
         return coordi.x
     }

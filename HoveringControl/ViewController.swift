@@ -9,7 +9,7 @@ import UIKit
 
 class ViewController: UIViewController {
     let cod = coordiViewModel()
-    let conn = 
+    let socket = socketConnection.socket
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -27,18 +27,34 @@ class ViewController: UIViewController {
     @IBAction func moveDown(_ sender: Any) {
         cod.newY(-1)
         updateCoordinate()
+        socket.sendMessage(msg: cod.msg)
+        print("message sent : \(cod.msg)")
+        cod.reset()
+        
     }
     @IBAction func moveRight(_ sender: Any) {
         cod.newX(1)
         updateCoordinate()
+        socket.sendMessage(msg: cod.msg)
+        print("message sent : \(cod.msg)")
+        cod.reset()
+        
     }
     @IBAction func moveUp(_ sender: Any) {
         cod.newY(1)
         updateCoordinate()
+        socket.sendMessage(msg: cod.msg)
+        print("message sent : \(cod.msg)")
+        cod.reset()
+        
     }
     @IBAction func moveLeft(_ sender: Any) {
         cod.newX(-1)
         updateCoordinate()
+        socket.sendMessage(msg: cod.msg)
+        print("message sent : \(cod.msg)")
+        cod.reset()
+        
     }
     
     func updateCoordinate(){
