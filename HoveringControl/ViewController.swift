@@ -9,6 +9,7 @@ import UIKit
 
 class ViewController: UIViewController {
     let cod = coordiViewModel()
+    let conn = 
     
     override func viewDidLoad() {
         super.viewDidLoad()

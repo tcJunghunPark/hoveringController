@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		52D830FED92747C0697D179F /* Pods_HoveringControl.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FB2650A3F05094D7FF0F31C6 /* Pods_HoveringControl.framework */; };
 		A70CF2BF27C37D770047C732 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A70CF2BE27C37D770047C732 /* AppDelegate.swift */; };
 		A70CF2C127C37D770047C732 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A70CF2C027C37D770047C732 /* SceneDelegate.swift */; };
 		A70CF2C327C37D770047C732 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A70CF2C227C37D770047C732 /* ViewController.swift */; };
@@ -14,6 +15,7 @@
 		A70CF2C827C37D770047C732 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A70CF2C727C37D770047C732 /* Assets.xcassets */; };
 		A70CF2CB27C37D770047C732 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A70CF2C927C37D770047C732 /* LaunchScreen.storyboard */; };
 		A70CF2D327C3874D0047C732 /* coordinate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A70CF2D227C3874D0047C732 /* coordinate.swift */; };
+		A70CF2D527C3AB710047C732 /* socketConnection.swift in Sources */ = {isa = PBXBuildFile; fileRef = A70CF2D427C3AB710047C732 /* socketConnection.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +28,10 @@
 		A70CF2CA27C37D770047C732 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		A70CF2CC27C37D770047C732 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A70CF2D227C3874D0047C732 /* coordinate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = coordinate.swift; sourceTree = "<group>"; };
+		A70CF2D427C3AB710047C732 /* socketConnection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = socketConnection.swift; sourceTree = "<group>"; };
+		DD92D7E61E46855D7265C1B3 /* Pods-HoveringControl.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HoveringControl.debug.xcconfig"; path = "Target Support Files/Pods-HoveringControl/Pods-HoveringControl.debug.xcconfig"; sourceTree = "<group>"; };
+		F743009B3D45DD85C1330005 /* Pods-HoveringControl.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HoveringControl.release.xcconfig"; path = "Target Support Files/Pods-HoveringControl/Pods-HoveringControl.release.xcconfig"; sourceTree = "<group>"; };
+		FB2650A3F05094D7FF0F31C6 /* Pods_HoveringControl.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_HoveringControl.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -33,17 +39,37 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				52D830FED92747C0697D179F /* Pods_HoveringControl.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		3CDCF331DB71390CA0D2B7B5 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				FB2650A3F05094D7FF0F31C6 /* Pods_HoveringControl.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		7A103B7A90920A5813FFE808 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				DD92D7E61E46855D7265C1B3 /* Pods-HoveringControl.debug.xcconfig */,
+				F743009B3D45DD85C1330005 /* Pods-HoveringControl.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
 		A70CF2B227C37D770047C732 = {
 			isa = PBXGroup;
 			children = (
 				A70CF2BD27C37D770047C732 /* HoveringControl */,
 				A70CF2BC27C37D770047C732 /* Products */,
+				7A103B7A90920A5813FFE808 /* Pods */,
+				3CDCF331DB71390CA0D2B7B5 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -62,6 +88,7 @@
 				A70CF2C027C37D770047C732 /* SceneDelegate.swift */,
 				A70CF2C227C37D770047C732 /* ViewController.swift */,
 				A70CF2D227C3874D0047C732 /* coordinate.swift */,
+				A70CF2D427C3AB710047C732 /* socketConnection.swift */,
 				A70CF2C427C37D770047C732 /* Main.storyboard */,
 				A70CF2C727C37D770047C732 /* Assets.xcassets */,
 				A70CF2C927C37D770047C732 /* LaunchScreen.storyboard */,
@@ -77,9 +104,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = A70CF2CF27C37D770047C732 /* Build configuration list for PBXNativeTarget "HoveringControl" */;
 			buildPhases = (
+				21A1320FD5E0D6B7C98E0EE1 /* [CP] Check Pods Manifest.lock */,
 				A70CF2B727C37D770047C732 /* Sources */,
 				A70CF2B827C37D770047C732 /* Frameworks */,
 				A70CF2B927C37D770047C732 /* Resources */,
+				DBA3F3AD88BA8860BF623ED0 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -136,6 +165,48 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		21A1320FD5E0D6B7C98E0EE1 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-HoveringControl-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		DBA3F3AD88BA8860BF623ED0 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-HoveringControl/Pods-HoveringControl-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-HoveringControl/Pods-HoveringControl-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-HoveringControl/Pods-HoveringControl-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		A70CF2B727C37D770047C732 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -144,6 +215,7 @@
 				A70CF2C327C37D770047C732 /* ViewController.swift in Sources */,
 				A70CF2BF27C37D770047C732 /* AppDelegate.swift in Sources */,
 				A70CF2C127C37D770047C732 /* SceneDelegate.swift in Sources */,
+				A70CF2D527C3AB710047C732 /* socketConnection.swift in Sources */,
 				A70CF2D327C3874D0047C732 /* coordinate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -288,6 +360,7 @@
 		};
 		A70CF2D027C37D770047C732 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = DD92D7E61E46855D7265C1B3 /* Pods-HoveringControl.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -316,6 +389,7 @@
 		};
 		A70CF2D127C37D770047C732 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = F743009B3D45DD85C1330005 /* Pods-HoveringControl.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
