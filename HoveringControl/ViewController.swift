@@ -29,56 +29,37 @@ class ViewController: UIViewController {
     @IBAction func moveDown(_ sender: Any) {
         cod.newY(-1)
         updateCoordinate()
-        let response : String = socket.sendMessage(msg: cod.msg)
+        socket.sendMessage(msg: cod.msg)
         print("message sent : \(cod.msg)")
         
-        if response == "-1"{
-            print("connection failed!")
-        }else {
-            responseCoordinate.text = response
-        }
         cod.reset()
         
     }
     @IBAction func moveRight(_ sender: Any) {
         cod.newX(1)
         updateCoordinate()
-        let response : String = socket.sendMessage(msg: cod.msg)
+        socket.sendMessage(msg: cod.msg)
         print("message sent : \(cod.msg)")
         
-        if response == "-1"{
-            print("connection failed!")
-        }else {
-            responseCoordinate.text = response
-        }
         cod.reset()
         
     }
     @IBAction func moveUp(_ sender: Any) {
         cod.newY(1)
         updateCoordinate()
-        let response : String = socket.sendMessage(msg: cod.msg)
+        socket.sendMessage(msg: cod.msg)
         print("message sent : \(cod.msg)")
         
-        if response == "-1"{
-            print("connection failed!")
-        }else {
-            responseCoordinate.text = response
-        }
+      
         cod.reset()
         
     }
     @IBAction func moveLeft(_ sender: Any) {
         cod.newX(-1)
         updateCoordinate()
-        let response : String = socket.sendMessage(msg: cod.msg)
+        socket.sendMessage(msg: cod.msg)
         print("message sent : \(cod.msg)")
         
-        if response == "-1"{
-            print("connection failed!")
-        }else {
-            responseCoordinate.text = response
-        }
         cod.reset()
         
     }

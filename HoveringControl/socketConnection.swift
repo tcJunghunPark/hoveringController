@@ -26,26 +26,27 @@ class socketConnection {
         self.addr = addr
         self.port = port
         client = TCPClient(address: addr, port: port)
-        //connect()
+    
     }
-    func sendMessage(msg:String) -> String{
-        guard let client = client else {return ""}
+    func sendMessage(msg:String){
+        guard let client = client else {return}
+        
+        let response = sendRequest(string: msg, using: client)
+        print("response is \(response)")
+        
+    }
+    func connect(){
+        guard let client = client else {return}
         
         switch client.connect(timeout: 10){
         case .success:
-            print("\(msg) sent")
-            let newMsg: String = msg + "\n\n"
-            if let response = sendRequest(string: newMsg, using: client){
-                return response
-            }
+            print("success")
+                
         case .failure(let error):
-            print("Fail to send, error : \(error)")
-//            let errMsg : String = String(describing: error)
-            return "-1"
-            
+            print("Fail to connect, error : \(error)")
         }
-        return ""
     }
+        
     private func sendRequest(string: String, using client: TCPClient) -> String? {
         switch client.send(string:string) {
         case .success:
@@ -73,7 +74,6 @@ class socketConnection {
         case unknownError
         
     }
-    
-    
-
 }
+
+
