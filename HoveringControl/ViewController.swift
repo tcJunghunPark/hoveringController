@@ -15,10 +15,12 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         updateCoordinate()
+        responseCoordinate.text = ""
     }
 
     @IBOutlet weak var coordinate: UILabel!
     
+    @IBOutlet weak var responseCoordinate: UILabel!
     @IBOutlet var up: UIView!
     @IBOutlet var down: UIView!
     @IBOutlet var left: UIView!
@@ -27,32 +29,56 @@ class ViewController: UIViewController {
     @IBAction func moveDown(_ sender: Any) {
         cod.newY(-1)
         updateCoordinate()
-        socket.sendMessage(msg: cod.msg)
+        let response : String = socket.sendMessage(msg: cod.msg)
         print("message sent : \(cod.msg)")
+        
+        if response == "-1"{
+            print("connection failed!")
+        }else {
+            responseCoordinate.text = response
+        }
         cod.reset()
         
     }
     @IBAction func moveRight(_ sender: Any) {
         cod.newX(1)
         updateCoordinate()
-        socket.sendMessage(msg: cod.msg)
+        let response : String = socket.sendMessage(msg: cod.msg)
         print("message sent : \(cod.msg)")
+        
+        if response == "-1"{
+            print("connection failed!")
+        }else {
+            responseCoordinate.text = response
+        }
         cod.reset()
         
     }
     @IBAction func moveUp(_ sender: Any) {
         cod.newY(1)
         updateCoordinate()
-        socket.sendMessage(msg: cod.msg)
+        let response : String = socket.sendMessage(msg: cod.msg)
         print("message sent : \(cod.msg)")
+        
+        if response == "-1"{
+            print("connection failed!")
+        }else {
+            responseCoordinate.text = response
+        }
         cod.reset()
         
     }
     @IBAction func moveLeft(_ sender: Any) {
         cod.newX(-1)
         updateCoordinate()
-        socket.sendMessage(msg: cod.msg)
+        let response : String = socket.sendMessage(msg: cod.msg)
         print("message sent : \(cod.msg)")
+        
+        if response == "-1"{
+            print("connection failed!")
+        }else {
+            responseCoordinate.text = response
+        }
         cod.reset()
         
     }

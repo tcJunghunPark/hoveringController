@@ -20,23 +20,45 @@ class socketConnection {
     }
     var addr : String?
     var port : Int32
-    var client : UDPClient?
+    var client : TCPClient?
     
     func initSocket (addr : String, port : Int32) {
         self.addr = addr
         self.port = port
-        client = UDPClient(address: addr, port: port)
+        client = TCPClient(address: addr, port: port)
         //connect()
     }
-    func sendMessage(msg:String){
-        guard let client = client else {return}
+    func sendMessage(msg:String) -> String{
+        guard let client = client else {return ""}
         
-        switch client.send(string: msg){
+        switch client.connect(timeout: 10){
         case .success:
             print("\(msg) sent")
+            let newMsg: String = msg + "\n\n"
+            if let response = sendRequest(string: newMsg, using: client){
+                return response
+            }
         case .failure(let error):
             print("Fail to send, error : \(error)")
+//            let errMsg : String = String(describing: error)
+            return "-1"
+            
         }
+        return ""
+    }
+    private func sendRequest(string: String, using client: TCPClient) -> String? {
+        switch client.send(string:string) {
+        case .success:
+            return readResponse(from: client)
+        case .failure(let error):
+            let errMsg : String = String(describing: error)
+            return errMsg
+        }
+    }
+    private func readResponse(from client: TCPClient) -> String? {
+        guard let response = client .read(1024*10) else {return nil}
+        print(response)
+        return String(bytes: response, encoding: .utf8)
     }
     func changeAddr(addr : String){
         self.addr = addr
@@ -44,10 +66,14 @@ class socketConnection {
     func changePort(port : Int32){
         self.port = port
     }
-    func broadCast() {
-        guard let client = client else {return}
-        client.enableBroadcast()
+    public enum SocketError: Error {
+        case queryFailed
+        case connectionClosed
+        case connecitonTimeout
+        case unknownError
+        
     }
+    
     
 
 }

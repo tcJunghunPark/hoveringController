@@ -102,12 +102,20 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="tintColor" systemColor="systemPinkColor"/>
                             </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="127.123124, 37.1023" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vrQ-ie-1hh">
+                                <rect key="frame" x="426.5" y="601" width="227" height="30"/>
+                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="25"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="ivK-3G-yj0" secondAttribute="trailing" constant="29" id="67F-Sp-dUJ"/>
+                            <constraint firstItem="vrQ-ie-1hh" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="9R5-oe-6Yn"/>
                             <constraint firstItem="nLR-n1-Rag" firstAttribute="centerX" secondItem="CWk-Qc-hKl" secondAttribute="centerX" id="Ada-V4-Tjt"/>
+                            <constraint firstItem="vrQ-ie-1hh" firstAttribute="top" secondItem="nLR-n1-Rag" secondAttribute="bottom" constant="132" id="CU2-WP-BOD"/>
                             <constraint firstItem="CWk-Qc-hKl" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="149" id="GUl-AX-Vgq"/>
                             <constraint firstItem="nLR-n1-Rag" firstAttribute="top" secondItem="CWk-Qc-hKl" secondAttribute="bottom" constant="131" id="c8y-dQ-FiS"/>
                             <constraint firstItem="CWk-Qc-hKl" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="hid-K8-msG"/>
@@ -118,6 +126,7 @@
                         <outlet property="coordinate" destination="CWk-Qc-hKl" id="Qiq-vR-3zr"/>
                         <outlet property="down" destination="8bC-Xf-vdC" id="VZn-0z-R8D"/>
                         <outlet property="left" destination="8bC-Xf-vdC" id="nRd-hy-ha2"/>
+                        <outlet property="responseCoordinate" destination="vrQ-ie-1hh" id="2Bq-fN-cja"/>
                         <outlet property="right" destination="8bC-Xf-vdC" id="oes-h8-U15"/>
                         <outlet property="up" destination="8bC-Xf-vdC" id="SOM-a1-PBf"/>
                     </connections>

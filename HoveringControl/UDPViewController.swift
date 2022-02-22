@@ -29,8 +29,8 @@ class UDPViewController: UIViewController {
         socket.changeAddr(addr: addr)
         socket.changePort(port: port)
         socket.initSocket(addr: addr, port: port)
-        socket.broadCast()
-        connectionMsg.text = "Broadcasting Enabled!"
+        
+        connectionMsg.text = "connection init!"
         print("---> address \(addr), port \(port) connected")
     }
 }
