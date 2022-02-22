@@ -21,7 +21,7 @@ while True:
     print('Received from: ', addr, ', data: ', data.decode())
     ans = "(127.0001, 36.0008)"
     reply = ans.encode()
-    client_socket.sendall(data)
+    client_socket.sendall(reply)
 
 client_socket.close()
 server_socket.close()

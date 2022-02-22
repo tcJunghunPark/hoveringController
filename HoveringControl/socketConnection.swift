@@ -28,12 +28,11 @@ class socketConnection {
         client = TCPClient(address: addr, port: port)
     
     }
-    func sendMessage(msg:String){
-        guard let client = client else {return}
+    func sendMessage(msg:String) -> String?{
+        guard let client = client else {return "-1"}
         
         let response = sendRequest(string: msg, using: client)
-        print("response is \(response)")
-        
+        return response
     }
     func connect(){
         guard let client = client else {return}
@@ -53,12 +52,13 @@ class socketConnection {
             return readResponse(from: client)
         case .failure(let error):
             let errMsg : String = String(describing: error)
-            return errMsg
+            print("\(errMsg)")
+            return "-1"
         }
     }
     private func readResponse(from client: TCPClient) -> String? {
         guard let response = client .read(1024*10) else {return nil}
-        print(response)
+        
         return String(bytes: response, encoding: .utf8)
     }
     func changeAddr(addr : String){

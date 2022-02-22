@@ -29,16 +29,25 @@ class ViewController: UIViewController {
     @IBAction func moveDown(_ sender: Any) {
         cod.newY(-1)
         updateCoordinate()
-        socket.sendMessage(msg: cod.msg)
+        guard let response = socket.sendMessage(msg: cod.msg) else {return}
+        if response == "-1"{
+            responseCoordinate.text = "connection bad"
+        }else{
+            responseCoordinate.text = response
+        }
         print("message sent : \(cod.msg)")
-        
         cod.reset()
         
     }
     @IBAction func moveRight(_ sender: Any) {
         cod.newX(1)
         updateCoordinate()
-        socket.sendMessage(msg: cod.msg)
+        guard let response = socket.sendMessage(msg: cod.msg) else {return}
+        if response == "-1"{
+            responseCoordinate.text = "connection bad"
+        }else{
+            responseCoordinate.text = response
+        }
         print("message sent : \(cod.msg)")
         
         cod.reset()
@@ -47,7 +56,12 @@ class ViewController: UIViewController {
     @IBAction func moveUp(_ sender: Any) {
         cod.newY(1)
         updateCoordinate()
-        socket.sendMessage(msg: cod.msg)
+        guard let response = socket.sendMessage(msg: cod.msg) else {return}
+        if response == "-1"{
+            responseCoordinate.text = "connection bad"
+        }else{
+            responseCoordinate.text = response
+        }
         print("message sent : \(cod.msg)")
         
       
@@ -57,7 +71,12 @@ class ViewController: UIViewController {
     @IBAction func moveLeft(_ sender: Any) {
         cod.newX(-1)
         updateCoordinate()
-        socket.sendMessage(msg: cod.msg)
+        guard let response = socket.sendMessage(msg: cod.msg) else {return}
+        if response == "-1"{
+            responseCoordinate.text = "connection bad"
+        }else{
+            responseCoordinate.text = response
+        }
         print("message sent : \(cod.msg)")
         
         cod.reset()
