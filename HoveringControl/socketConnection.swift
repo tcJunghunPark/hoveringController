@@ -34,15 +34,17 @@ class socketConnection {
         let response = sendRequest(string: msg, using: client)
         return response
     }
-    func connect(){
-        guard let client = client else {return}
+    func connect() -> Int{
+        guard let client = client else {return -1}
         
         switch client.connect(timeout: 10){
         case .success:
             print("success")
+            return 1
                 
         case .failure(let error):
             print("Fail to connect, error : \(error)")
+            return -1
         }
     }
         

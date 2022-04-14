@@ -29,9 +29,14 @@ class UDPViewController: UIViewController {
         socket.changeAddr(addr: addr)
         socket.changePort(port: port)
         socket.initSocket(addr: addr, port: port)
-        socket.connect()
+        var connection_state = socket.connect()
         
-        connectionMsg.text = "connection init!"
+        if connection_state == 1{
+            connectionMsg.text = "connection init!"
+        }else{
+            connectionMsg.text = "Fail to Connect!"
+        }
+        
         print("---> address \(addr), port \(port) connected")
     }
 }
