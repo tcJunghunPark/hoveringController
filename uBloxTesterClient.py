@@ -43,6 +43,9 @@ while True:
         for f in funcs:
             f() # function call and sleep as input interval
             time.sleep(sleep_time)
+        
+        print("system end!")
+        break
 
     except KeyboardInterrupt as e:
         client_socket.close()
