@@ -1,7 +1,17 @@
-import socket
-import time
+from serial import Serial
+from pyubx2 import UBXReader
+import csv, socket, time
+
+
+stream = Serial('/dev/ttyACM0', 115200, timeout=1)
+ubr = UBXReader(stream,validate=0)
 
 client_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+
+f = open("position_data.csv","a")
+writer = csv.writer(f)
+
+flag = [-1,-1,-1,-1]
 
 def right_button():
     client_socket.sendall('(1, 0)'.encode())
@@ -25,6 +35,7 @@ def down_button():
     print("received coordinate: ", repr(coordinate.decode()))
 
 
+
 #Main Function
 HOST = input("Server Address: ")
 PORT = int(input("Server PORT: "))
@@ -35,25 +46,45 @@ try:
     client_socket.connect((HOST,PORT))
 except socket.error:
     print("Socket Connection ERROR")
+
+time.sleep(5 * 60) # initial sleep time until signal stablized
+counter = 0
+func_counter = 0
+
 while True:
     try:
-        time.sleep(5 * 60) # initial sleep time until signal stablized
-        time.sleep(sleep_time)
+        if counter <= sleep_time:
+            (raw_data,parsed_data) = ubr.read()
 
-        for f in funcs:
-            f() # function call and sleep as input interval
-            time.sleep(sleep_time)
-        
-        print("system end!")
-        break
+            print("parsed data: ", parsed_data)
+            print("type: ", type(parsed_data))
+
+            if parsed_data!=None and parsed_data.identity == "GNGGA":
+                str_data = str(parsed_data)[6:-2]
+                list_data = str_data.split(',')
+                time = list_data[1][6:]
+                lat = list_data[2][5:]
+                lon = list_data[4][5:]
+                alt = list_data[9][5:]
+
+                log = [time,lat,lon,alt]
+                writer.writerow(log) # wirte log to csv file
+                counter += 1
+                
+        elif func_counter < len(funcs):
+            writer.writerow(flag)
+            funcs[func_counter]()
+            func_counter += 1
+            counter = 0
+        else:
+            print("system end!")
+            break
 
     except KeyboardInterrupt as e:
         client_socket.close()
         break
-    
-    
-
-
-    
+    except Exception as e:
+        print(e)
+        break
 
     
